@@ -1,4 +1,4 @@
-<div class="container">
+<div class="main-container">
     <h1>Test Reactive Forms App</h1>
     <form [formGroup]="loginForm" (ngSubmit)="checkLogin()">
         <label for="email">
@@ -6,7 +6,7 @@
         </label>
         <input type="email" [formControl]="email">
         <div class="errors" *ngIf="email.errors && email.dirty">
-            <span>
+            <span *ngIf="email.errors?.['required']">
                 Email is required
             </span>
         </div>
@@ -16,8 +16,12 @@
         </label>
         <input type="password" [formControl]="password">
         <div class="errors" *ngIf="password.errors && password.dirty">
-            <span>
+            <span *ngIf="password.errors?.['required']">
                 Password is required
+            </span>
+
+            <span *ngIf="password.errors?.['minlength']">
+                Password must be at least 8 characters long
             </span>
         </div>
 

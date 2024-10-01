@@ -19,7 +19,10 @@ export class LoginComponent {
   user: UserDTO = new UserDTO('','');
 
   email: FormControl = new FormControl(this.user.email, Validators.required);
-  password: FormControl = new FormControl(this.user.password, Validators.required);
+  password: FormControl = new FormControl(this.user.password, [
+    Validators.required,
+    Validators.minLength(8)
+  ]);
   loginForm: FormGroup = new FormGroup({});
 
   constructor(private fb: FormBuilder) {
