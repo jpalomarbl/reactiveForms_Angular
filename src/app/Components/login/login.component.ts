@@ -1,19 +1,25 @@
 import { Component } from '@angular/core';
-import { FormBuilder, FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
+import {
+  FormBuilder,
+  FormControl,
+  FormGroup,
+  ReactiveFormsModule,
+  Validators } from '@angular/forms';
 import { UserDTO } from '../../Models/user.dto';
+import { CommonModule } from '@angular/common';
 
 @Component({
   selector: 'app-login',
   standalone: true,
-  imports: [ReactiveFormsModule],
+  imports: [ReactiveFormsModule, CommonModule],
   templateUrl: './login.component.html',
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
   user: UserDTO = new UserDTO('','');
 
-  email: FormControl = new FormControl(this.user.email);
-  password: FormControl = new FormControl(this.user.password);
+  email: FormControl = new FormControl(this.user.email, Validators.required);
+  password: FormControl = new FormControl(this.user.password, Validators.required);
   loginForm: FormGroup = new FormGroup({});
 
   constructor(private fb: FormBuilder) {
