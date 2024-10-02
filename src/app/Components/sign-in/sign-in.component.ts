@@ -18,6 +18,7 @@ import { checkInvalidKeyWord } from '../../Directives/check-invalid-keyword.vali
 })
 export class SignInComponent {
   user: UserDTO = new UserDTO('','', '', '', '', '', new Date());
+  submitTry: boolean = false;
 
   email: FormControl = new FormControl(this.user.email, [
     Validators.required,
@@ -71,29 +72,35 @@ export class SignInComponent {
   }
 
   checkLogin(): void {
-    this.user.email = this.email.value;
-    this.user.password = this.password.value;
-    this.user.name = this.name.value;
-    this.user.surname1 = this.surname1.value;
-    this.user.surname2 = this.surname2.value;
-    this.user.alias = this.alias.value;
-    this.user.birthdate = this.birthdate.value;
+    this.submitTry = true;
 
-    console.log(
-      'User: ',
-      this.user.email,
-      '\nPassword: ',
-      this.user.password,
-      '\nName: ',
-      this.user.name,
-      '\Surname1: ',
-      this.user.surname1,
-      '\nSurname2: ',
-      this.user.surname2,
-      '\nAlias: ',
-      this.user.alias,
-      '\nBirthdate: ',
-      this.user.birthdate
-    );
+    if (this.signInForm.valid) {
+      this.user.email = this.email.value;
+      this.user.password = this.password.value;
+      this.user.name = this.name.value;
+      this.user.surname1 = this.surname1.value;
+      this.user.surname2 = this.surname2.value;
+      this.user.alias = this.alias.value;
+      this.user.birthdate = this.birthdate.value;
+
+      console.log(
+        'User: ',
+        this.user.email,
+        '\nPassword: ',
+        this.user.password,
+        '\nName: ',
+        this.user.name,
+        '\Surname1: ',
+        this.user.surname1,
+        '\nSurname2: ',
+        this.user.surname2,
+        '\nAlias: ',
+        this.user.alias,
+        '\nBirthdate: ',
+        this.user.birthdate
+      );
+    } else {
+      console.log('FORM IS INVALID!!!');
+    }
   }
 }
