@@ -55,4 +55,45 @@ export class SignInComponent {
   birthdate: FormControl = new FormControl(this.user.birthdate, [
     Validators.required,
   ]);
+
+  signInForm: FormGroup = new FormGroup({});
+
+  constructor(private fb: FormBuilder) {
+    this.signInForm = this.fb.group({
+      email: this.email,
+      password: this.password,
+      name: this.name,
+      surname1: this.surname1,
+      surname2: this.surname2,
+      alias: this.alias,
+      birthdate: this.birthdate
+    });
+  }
+
+  checkLogin(): void {
+    this.user.email = this.email.value;
+    this.user.password = this.password.value;
+    this.user.name = this.name.value;
+    this.user.surname1 = this.surname1.value;
+    this.user.surname2 = this.surname2.value;
+    this.user.alias = this.alias.value;
+    this.user.birthdate = this.birthdate.value;
+
+    console.log(
+      'User: ',
+      this.user.email,
+      '\nPassword: ',
+      this.user.password,
+      '\nName: ',
+      this.user.name,
+      '\Surname1: ',
+      this.user.surname1,
+      '\nSurname2: ',
+      this.user.surname2,
+      '\nAlias: ',
+      this.user.alias,
+      '\nBirthdate: ',
+      this.user.birthdate
+    );
+  }
 }
