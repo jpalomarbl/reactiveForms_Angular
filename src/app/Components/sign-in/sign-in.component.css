@@ -1,0 +1,68 @@
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:ital,wght@0,300..800;1,300..800&display=swap');
+
+div.main-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-content: center;
+    justify-items: center;
+    align-items: center;
+
+    height: 100vh;
+
+    font-family: "Open Sans", sans-serif;
+}
+
+h1 {
+    font-size: 1.8em;
+    text-align: center;
+}
+
+form {
+    width: 25vw;
+
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+
+    padding: 2vw;
+    background-color: rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+form > label,
+form > input,
+form > button {
+    width: 50%;
+}
+
+form > label {
+    padding-right: 10px;
+    font-weight: bold;
+}
+
+form > button {
+    background-color:deepskyblue;
+    color: white;
+
+    font-weight: bold;
+
+    border: none;
+    border-radius: 5px;
+
+    cursor: pointer;
+
+    padding: 0.5vh;
+    margin-top: 2vh;
+}
+
+form > div > span {
+    color: red;
+    font-size: 0.7em;
+    margin-left: 5px;
+}
+
+form > input.ng-invalid.ng-dirty {
+    border-color: red;
+}
