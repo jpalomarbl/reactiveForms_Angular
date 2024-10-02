@@ -19,7 +19,7 @@ import { checkInvalidKeyWord } from '../../Directives/check-invalid-keyword.vali
   styleUrl: './login.component.css'
 })
 export class LoginComponent {
-  user: UserDTO = new UserDTO('','');
+  user: UserDTO = new UserDTO('','', '', '', '', '', new Date());
 
   email: FormControl = new FormControl(this.user.email, [
     Validators.required,
