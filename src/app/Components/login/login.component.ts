@@ -25,6 +25,7 @@ export class LoginComponent {
     Validators.required,
     checkInvalidKeyWord(/email@email.com/)
   ]);
+  
   password: FormControl = new FormControl(this.user.password, [
     Validators.required,
     Validators.minLength(8)
