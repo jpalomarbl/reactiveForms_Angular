@@ -6,6 +6,7 @@ import {
   FormGroup,
   ReactiveFormsModule,
   Validators } from '@angular/forms';
+import { formatDate } from '@angular/common';
 
 import { UserDTO } from '../../Models/user.dto';
 import { checkInvalidKeyWord } from '../../Directives/check-invalid-keyword.validator';
@@ -53,7 +54,7 @@ export class SignInComponent {
     Validators.maxLength(25)
   ]);
 
-  birthdate: FormControl = new FormControl(this.user.birthdate, [
+  birthdate: FormControl = new FormControl(formatDate(this.user.birthdate, 'dd-MM-yyyy', 'en'), [
     Validators.required,
   ]);
 
@@ -67,7 +68,7 @@ export class SignInComponent {
       surname1: this.surname1,
       surname2: this.surname2,
       alias: this.alias,
-      birthdate: this.birthdate
+      birthdate: this.birthdate 
     });
   }
 
@@ -97,7 +98,7 @@ export class SignInComponent {
         '\nAlias: ',
         this.user.alias,
         '\nBirthdate: ',
-        this.user.birthdate
+        formatDate(this.user.birthdate, 'dd-MM-yyyy', 'en')
       );
     } else {
       console.log('FORM IS INVALID!!!');
