@@ -1,12 +1,15 @@
 import { Component } from '@angular/core';
+import { CommonModule } from '@angular/common';
 import {
   FormBuilder,
   FormControl,
   FormGroup,
   ReactiveFormsModule,
   Validators } from '@angular/forms';
+
 import { UserDTO } from '../../Models/user.dto';
-import { CommonModule } from '@angular/common';
+import { checkInvalidKeyWord } from '../../Directives/check-invalid-keyword.validator';
+
 
 @Component({
   selector: 'app-login',
@@ -18,7 +21,10 @@ import { CommonModule } from '@angular/common';
 export class LoginComponent {
   user: UserDTO = new UserDTO('','');
 
-  email: FormControl = new FormControl(this.user.email, Validators.required);
+  email: FormControl = new FormControl(this.user.email, [
+    Validators.required,
+    checkInvalidKeyWord(/email@email.com/)
+  ]);
   password: FormControl = new FormControl(this.user.password, [
     Validators.required,
     Validators.minLength(8)

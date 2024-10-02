@@ -9,6 +9,10 @@
             <span *ngIf="email.errors?.['required']">
                 Email is required
             </span>
+
+            <span *ngIf="email.errors?.['invalidKeyWord']">
+                email&#64;email.com is not a valid email.
+            </span>
         </div>
 
         <label for="password">
